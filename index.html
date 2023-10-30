@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello, World! with Dynamic Content</title>
+    <script>
+        function displayDate() {
+            var dynamicElement = document.getElementById('dynamic-content');
+            dynamicElement.textContent = new Date().toLocaleString();
+        }
+    </script>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>Current date: <span id="dynamic-content">Loading...</span></p>
+    <script>
+        // Call the function to display the date when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            displayDate();
+        });
+
+        // Update the date every 2nd second
+        setInterval(displayDate, 2000);
+    </script>
+</body>
+</html>
