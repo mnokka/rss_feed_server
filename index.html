@@ -16,22 +16,35 @@
             counterElement.textContent = count;
         }
 
+        function displayMousePosition(event) {
+            let mouseX = event.clientX;
+            let mouseY = event.clientY;
+
+            let mousePositionElement = document.getElementById('mouse-coordinates');
+            mousePositionElement.textContent = `Mouse Coordinates: X: ${mouseX}, Y: ${mouseY}`;
+        }
+
         // Call the function to display the date when the page loads
         document.addEventListener('DOMContentLoaded', function() {
             displayDate();
             updateCounter(); // Initially set the counter value
 
             // Update the date every 2 seconds
-            setInterval(displayDate, 1000);
+            setInterval(displayDate, 2000);
 
             // Update the counter by 1 every 5 seconds
             setInterval(updateCounter, 5000);
+
+            // Event listener to capture mouse movement
+            document.addEventListener('mousemove', displayMousePosition);
         });
     </script>
 </head>
 <body>
     <h1>Hello, World!</h1>
     <p>Current date: <span id="dynamic-content">Loading...</span></p>
-    <p>5 sec Counter: <span id="counter">0</span></p>
+    <p>Counter: <span id="counter">0</span></p>
+    <p id="mouse-coordinates">Mouse Coordinates: X: 0, Y: 0</p>
 </body>
 </html>
+
