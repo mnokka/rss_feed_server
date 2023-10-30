@@ -3,23 +3,35 @@
 <head>
     <title>Hello, World! with Dynamic Content</title>
     <script>
+        let count = 0; // Initialize the counter
+
         function displayDate() {
-            var dynamicElement = document.getElementById('dynamic-content');
+            let dynamicElement = document.getElementById('dynamic-content');
             dynamicElement.textContent = new Date().toLocaleString();
         }
+
+        function updateCounter() {
+            let counterElement = document.getElementById('counter');
+            count++;
+            counterElement.textContent = count;
+        }
+
+        // Call the function to display the date when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            displayDate();
+            updateCounter(); // Initially set the counter value
+
+            // Update the date every 2 seconds
+            setInterval(displayDate, 1000);
+
+            // Update the counter by 1 every 5 seconds
+            setInterval(updateCounter, 5000);
+        });
     </script>
 </head>
 <body>
     <h1>Hello, World!</h1>
     <p>Current date: <span id="dynamic-content">Loading...</span></p>
-    <script>
-        // Call the function to display the date when the page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            displayDate();
-        });
-
-        // Update the date every 2nd second
-        setInterval(displayDate, 2000);
-    </script>
+    <p>5 sec Counter: <span id="counter">0</span></p>
 </body>
 </html>
